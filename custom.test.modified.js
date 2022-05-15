@@ -1,4 +1,3 @@
-// [assignment] please copy the entire modified custom.test.js here
 const hre = require('hardhat')
 const { ethers, waffle } = hre
 const { loadFixture } = waffle
@@ -126,7 +125,6 @@ describe('Custom Tests', function () {
   it('[assignment] iii. see assignment doc for details', async () => {
     // [assignment] complete code here
     const { tornadoPool, token } = await loadFixture(fixture)
-
     const aliceDepositAmount = utils.parseEther('0.13')
     const aliceDepositUtxo = new Utxo({ amount: aliceDepositAmount })
     await transaction({ tornadoPool, outputs: [aliceDepositUtxo] })
@@ -163,7 +161,13 @@ describe('Custom Tests', function () {
       recipient: bobEthAddress,
     })
 
+    const aliceFinalDepositAmount = utils.parseEther('0.00')
+    const aliceEthAddress = '0x5B38Da6a701c568545dCfcB03FcB875f56beddC4'
+
     const bobBalance = await token.balanceOf(bobEthAddress)
     expect(bobBalance).to.be.equal(bobWithdrawAmount)
+
+    const aliceBalance = await token.balanceOf(aliceEthAddress)
+    expect(aliceBalance).to.be.equal(aliceFinalDepositAmount)
   })
 })
