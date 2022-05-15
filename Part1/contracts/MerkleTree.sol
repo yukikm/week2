@@ -9,20 +9,9 @@ contract MerkleTree is Verifier {
     uint256 public index = 0; // the current index of the first unfilled leaf
     uint256 public root; // the current Merkle root
 
-    uint256[] public parentLevel;
-    uint256 public parentIndex = 0;
-
     uint256[] public nodes1;
     uint256[] public nodes2;
     uint256[] public nodes3;
-
-    // uint256 public itemIndex = 0;
-    // struct Item {
-    //     uint256 index;
-    //     uint256[] data;
-    // }
-
-    // Item[] public items;
     
     constructor() {
         // [assignment] initialize a Merkle tree of 8 with blank leaves
